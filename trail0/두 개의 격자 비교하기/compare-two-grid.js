@@ -1,35 +1,42 @@
+// 변수 선언 및 입력
 const fs = require("fs");
-let input = fs.readFileSync(0).toString().trim().split("\n");
-let row = Number(input[0].split(" ")[0]);
-let col = Number(input[0].split(" ")[1]);
+const input = fs.readFileSync(0).toString().trim().split("\n");
 
-let first_arr = [];
-let second_arr = [];
-let result_arr = new Array(row);
+const n = Number(input[0].split(" ")[0]);
+const m = Number(input[0].split(" ")[1]);
 
-for(let i = 0; i < row; i++){
-    first_arr[i] = input[i+1].split(" ").map(Number);
+// 2차원 배열을 구현합니다.
+let arr1 = Array(n).fill(0).map(() => Array(m).fill(0));
+let arr2 = Array(n).fill(0).map(() => Array(m).fill(0));
+let arr3 = Array(n).fill(0).map(() => Array(m).fill(0));
+
+// 첫 번째 배열의 입력을 받습니다.
+for (let i = 0; i < n; i++) {
+        arr1[i] = input[i + 1].split(" ").map(Number);
 }
 
-for(let i = 0; i < row; i++){
-    second_arr[i] = input[i+row+1].split(" ").map(Number);
+// 두 번째 배열의 입력을 받습니다.
+for (let i = 0; i < n; i++) {
+        arr2[i] = input[i + 1 + n].split(" ").map(Number);
 }
 
-for(let i = 0; i<row;i++){
-    result_arr[i]=new Array(col);
-    for(let j = 0; j < col; j++){
-        if(first_arr[i][j]!==second_arr[i][j]){
-            result_arr[i][j]=1;
-        }else{
-            result_arr[i][j]=0;
+// 두 배열의 같음 여부를 새로운 배열에 담습니다.
+for (let i = 0; i < n; i++) {
+    for (let j = 0; j < m; j++) {
+        if (arr1[i][j] === arr2[i][j]) {
+            arr3[i][j] = 0;
+        }
+        else {
+            arr3[i][j] = 1;
         }
     }
 }
 
-for(let i = 0; i<row;i++){
-    let output = "";
-    for(let j = 0; j <col; j++){
-        output += result_arr[i][j] + " ";
+// 새로운 배열을 출력합니다.
+for (let i = 0; i < n; i++) {
+    let str = "";
+    for (let j = 0; j < m; j++) {
+        str += arr3[i][j] + " ";
     }
-    console.log(output);
+    console.log(str);
 }
