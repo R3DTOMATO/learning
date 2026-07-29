@@ -5,8 +5,8 @@ int main() {
     // Please write your code here.
     int a = 7;
     int b = 23;
-    int c = 30;
+    int c = a+b;
 
-    cout<<a<<" + "<<b<<" = "<<a+b;
+    cout<<a<<" + "<<b<<" = "<<c;
     return 0;
 }
