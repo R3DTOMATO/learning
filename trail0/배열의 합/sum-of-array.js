@@ -1,21 +1,18 @@
-const fs =require("fs");
+// 변수 선언 및 입력
+const fs = require("fs");
 let input = fs.readFileSync(0).toString().trim().split("\n");
-const arr1 = input[0].split(" ").map(Number);
-const arr2 = input[1].split(" ").map(Number);
-const arr3 = input[2].split(" ").map(Number);
-const arr4 = input[3].split(" ").map(Number);
 
-let result1 = 0;
-let result2 = 0;
-let result3 = 0;
-let result4 = 0;
-for(let i = 0; i<4;i++){
-    result1 +=arr1[i];
-    result2 +=arr2[i];
-    result3 +=arr3[i];
-    result4 +=arr4[i];
+// 2차원 배열을 구현합니다.
+let arr2d = [];
+for (let i = 0; i < 4; i++) {
+    arr2d.push(input[i].split(" ").map(Number));
 }
-console.log(result1);
-console.log(result2);
-console.log(result3);
-console.log(result4);
+
+// 각 줄의 합을 출력합니다.
+for (let i = 0; i < 4; i++) {
+    let sum = 0;
+    for (let j = 0; j < 4; j++) {
+        sum += arr2d[i][j];
+    }
+    console.log(sum);
+}
